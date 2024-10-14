@@ -19,6 +19,9 @@ const renderUsers = async () => {
 };
 
 const app = () => {
+  const config = (window as any).__CONFIG__;
+  delete (window as any).__CONFIG__;
+  createIoCContainer().register('config', config);
   renderUsers();
 };
 
@@ -29,3 +32,4 @@ window.onload = () => {
 
   app();
 };
+
