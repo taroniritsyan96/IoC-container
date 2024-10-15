@@ -1,16 +1,14 @@
 import { Logger } from './logger';
 
 import type { ApiConfig } from '../types';
-import {ioc} from "../ioc";
-
 export class HTTP {
   logger: Logger;
   apiConfig: ApiConfig;
 
   static $inject = ['logger'];
 
-  constructor(logger: Logger ) {
-    this.apiConfig = ioc.resolve('config');
+  constructor(apiConfig: ApiConfig, logger: Logger ) {
+    this.apiConfig = apiConfig;
     this.logger = logger;
   }
 
