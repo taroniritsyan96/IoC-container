@@ -5,9 +5,10 @@ export class Users {
   http: HTTP;
   apiConfig: ApiConfig;
 
-  constructor(apiConfig: ApiConfig) {
-    this.http = new HTTP(apiConfig);
-    this.apiConfig = apiConfig;
+  static $inject = ['config','http']
+  constructor(config: ApiConfig, http: HTTP) {
+    this.apiConfig = config;
+    this.http = http;
   }
 
   getUsers() {
