@@ -1,13 +1,14 @@
 import { HTTP } from './http';
 
 import type { ApiConfig, User } from '../types';
+import {ioc} from "../ioc";
 export class Users {
   http: HTTP;
   apiConfig: ApiConfig;
 
-  static $inject = ['config','http']
-  constructor(apiConfig: ApiConfig, http: HTTP) {
-    this.apiConfig = apiConfig;
+  static $inject = ['http']
+  constructor(http: HTTP) {
+    this.apiConfig = ioc.resolve('config');
     this.http = http;
   }
 

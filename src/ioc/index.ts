@@ -11,6 +11,8 @@ type IoCResources = {
   users: typeof Users
 }
 
+
+
 export const createIoCContainer = () =>  {
   const ioc = new IoCContainer<IoCResources>();
   // you can register some resources right now below...
@@ -20,3 +22,4 @@ export const createIoCContainer = () =>  {
   return ioc;
 };
 
+export const ioc = createIoCContainer();

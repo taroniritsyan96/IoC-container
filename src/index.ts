@@ -1,10 +1,10 @@
 import { Logger } from './services/logger';
 
-import type { User } from './types';
-import {createIoCContainer} from "./ioc";
-
+import type {User} from './types';
+import {createIoCContainer, ioc} from "./ioc";
 
 const renderUsers = async () => {
+
   const usersService = createIoCContainer().resolve('users');
   const users = await usersService.getUsers();
 
@@ -21,7 +21,8 @@ const renderUsers = async () => {
 const app = () => {
   const config = (window as any).__CONFIG__;
   delete (window as any).__CONFIG__;
-  createIoCContainer().register('config', config);
+  ioc.register('config', config.api);
+
   renderUsers();
 };
 
