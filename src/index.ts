@@ -1,11 +1,11 @@
 import { Logger } from './services/logger';
 
 import type {User} from './types';
-import {createIoCContainer, ioc} from "./ioc";
+import {ioc} from "./ioc";
 
 const renderUsers = async () => {
 
-  const usersService = createIoCContainer().resolve('users');
+  const usersService = ioc.resolve('users');
   const users = await usersService.getUsers();
 
   const listNode = document.getElementById('users-list');
